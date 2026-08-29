@@ -1,0 +1,19 @@
+# Spatial data, not including in repo
+*.gpkg/
+*.gdb/
+*.shp
+*.shx
+*.dbg
+*.tif
+
+# Python
+__pycache__/
+.ipynb_checkpoints/
+
+# OS 
+.DS_Store
+Thumbs.db
+
+# Raw and interim data
+data/raw/
+data/interim/

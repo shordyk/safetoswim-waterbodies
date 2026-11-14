@@ -1,0 +1,111 @@
+---
+title: "California Water Bodies Salinity Assessment"
+author: "SHordyk"
+date: last-modified
+format:
+  html:
+    code-fold: true
+    toc: true
+    toc-depth: 3
+    theme: cosmo
+---
+
+## 1. Introduction & Project Framing
+
+### Motivation & Objectives
+
+The intention of this project was to assess the status of salinity classification and monitoring coverage across the state of California, with the aim of using this information to develop a database of salinity classifications for major waterbodies. The main use case for the database is supporting the **California Water Boards' Safe-To-Swim (S2S) map**.
+
+### Salinity Context & Background
+
+While salinity might seem straightforward at first glance, its lack of historical consideration across certain datasets explains why it has not been prioritized in legacy monitoring frameworks. Beyond basic water quality, understanding salinity profiles is critical for evaluating broader ecological concerns—such as carbon sequestration dynamics and wetland resilience—which serves as a primary motivation for incorporating the California Aquatic Resources Inventory (CARI).
+
+------------------------------------------------------------------------
+
+## 2. Data Sources & History
+
+This analysis pulls from four core data repositories: 1. **CEDEN (California Environmental Data Exchange Network):** State-wide ambient water quality monitoring data (`CEDEN_export.tsv`). 2. **NWIS (National Water Information System):** Federal physical and chemical water parameters (`resultphyschem.csv`). 3. **CARI (California Aquatic Resources Inventory):** Wetland and aquatic feature polygons (`CARI_v3_3_0.gdb`). 4. **Safe-to-Swim (S2S):** Current monitoring stations and public portal data (`S2S_stations.csv`).
+
+::: callout-note
+### Note on CARI Salinity Classification
+
+CARI incorporates salinity modifiers, though historical inconsistencies exist across regional mapping efforts. Integrated Regional (IR) water planning groups are actively working to harmonize these attributes.
+:::
+
+::: callout-tip
+### Data Extraction Details
+
+- **Query Date:** September 18, 2026
+- **Source Query:** Local file exports extracted from regional geodatabase snapshots.
+:::
+
+------------------------------------------------------------------------
+
+## 3. Results & Discussion
+
+*(Brief summary of analysis pointing to specific figures and findings below).*
+
+### Fig 1a & 1b: CARI Major Classifications & Spatial Distribution
+
+Breakdown of CARI polygons with salinity modifiers by major class alongside a spatial map colored by class.
+
+::: {layout-ncol="2"}
+![CARI Major Class Distribution](figures/fig1a_cari_major_class.png){#fig-1a}
+
+![Map of CARI Polygons with Salinity Modifiers](figures/fig1b_cari_salinity_map.png){#fig-1b}
+:::
+
+### Fig 2: CEDEN and NWIS Sampling Locations
+
+Spatial distribution of ambient water quality monitoring locations across California.
+
+![CEDEN and NWIS Sampling Locations](figures/fig2_sampling_locations.png){#fig-2}
+
+### Fig 3: CARI Spatial Overlap by Source
+
+Grouped comparison evaluating feature matching across sources—checking whether records were dropped between CEDEN and CARI, and validating known inland saline sources.
+
+![CARI Spatial Overlap by Source](figures/fig3_cari_overlap.png){#fig-3}
+
+### Fig 4: Safe-to-Swim Locations & CARI Intersections
+
+Assessment of S2S monitoring locations and their direct spatial intersections with CARI waterbody polygons.
+
+![Safe-to-Swim and CARI Intersections](figures/fig4_s2s_intersections.png){#fig-4}
+
+------------------------------------------------------------------------
+
+## 4. Future Work & Intentions
+
+- **Shared Contributable Database:** Transitioning toward a collaborative, open-access database architecture where regional agencies and researchers can contribute updates.
+- **Expanded Monitoring Integration:** Expanding automated ingestion pipelines to capture ongoing conductivity and total dissolved solids (TDS) metrics across state watersheds.
+
+------------------------------------------------------------------------
+
+## 5. Analysis Procedure
+
+### Packages & Tools
+
+- **`geopandas` & `pyogrio`:** Vector spatial data ingestion (`.gdb` layers), CRS management, and spatial joins/intersections.
+- **`pandas` & `numpy`:** Tabular data cleaning, filtering placeholder values, and summary aggregations.
+- **`matplotlib` & `seaborn`:** Generating static summary charts and spatial maps exported to `docs/figures/`.
+
+### Major Processing Steps
+
+1.  **Data Ingestion & CRS Verification:** Loaded tabular exports (CEDEN, NWIS, S2S) and read the `CARI_Polygons` layer directly from the File Geodatabase.
+2.  **Attribute Filtering:** Removed null and placeholder salinity entries (`"Undefined"`, `"N/A"`, `"n/a"`) to isolate verified salinity-modified polygons.
+3.  **Spatial Joins & Overlap Checks:** Cross-referenced point monitoring stations (CEDEN, NWIS, S2S) against CARI polygon boundaries to assess coverage gaps and dropped features.
+
+#### Key Code: Geodatabase Ingestion & Salinity Filtering
+
+\`\`\`python import geopandas as gpd import pandas as pd from pathlib import Path
+
+PROJECT_DIR = Path.cwd().parent DATA_DIR = PROJECT_DIR / "data" / "raw" CARI_PATH = DATA_DIR / "CARI_v3_3_0.gdb"
+
+# Load CARI Geodatabase layer
+
+gdf_cari = gpd.read_file(CARI_PATH, layer="CARI_Polygons")
+
+# Filter out missing or placeholder salinity modifiers
+
+placeholders = \["Undefined", "N/A", "n/a"\] cari_sal = gdf_cari.loc\[ gdf_cari\["salinity_modifier"\].notna() & \~gdf_cari\["salinity_modifier"\].isin(placeholders)\].copy()

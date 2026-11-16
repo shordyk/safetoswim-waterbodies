@@ -239,7 +239,7 @@ Figure&nbsp;1: Despite CARI’s statewide coverage, the salinity information is 
 <p>The 2,128 sites with no nearby station are concentrated in the Sierra Nevada, the northeast and the desert regions <em>(Fig. 6)</em>. These are mostly inland lakes and rivers outside CARI’s estuarine focus. Many of these sites are likely to be fresh, but there are known saline lakes in the same desert and eastern regions – such as the Salton Sea and Mono Lake. A full list of these sites, with each one’s nearest station and distance, is saved in <code>s2s_sites_no_salinity_station_250m.csv</code> for future reference.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figures/07_s2s_no_salinity_station.png" class="img-fluid figure-img" width="750"></p>
+<p><img src="figures/07_s2s_no_salinity_station.png" class="img-fluid figure-img" width="680"></p>
 <figcaption>(Fig. 6) Map of all Safe-to-Swim sites, sorted into those with a monitoring station nearby, those inside a CARI salinity polygon, and those with no station or CARI class. Highlights the spatial distribution of sites with no salinity data.</figcaption>
 </figure>
 </div>
@@ -254,24 +254,26 @@ Figure&nbsp;1: Despite CARI’s statewide coverage, the salinity information is 
 <li><p><strong>Use CARI where it applies, add measurements.</strong> Keep CARI’s estuarine classes as the default along the coast. Focus measurement-based classification on waterbodies labeled N/A, Fresh or Undefined, and on Oligohaline sites that straddle the 1 ppth cutoff. Use the 322 Safe-to-Swim sites that have both a CARI class and usable monitoring data to check agreement between the two.</p></li>
 <li><p><strong>Expand inland coverage.</strong> Add CARI’s stream (line) features and NWIS stream sites, both excluded from this analysis. For inland sites with no data, apply a documented freshwater default, with known saline lakes (e.g., Salton Sea, Mono Lake) flagged as exceptions. Could also draw from other sampling datasets, refer to sources for CARI, and reach out to the Integrated Report for more data.</p></li>
 <li><p><strong>Shared Contributable Database:</strong> Transitioning toward a collaborative, open-access database architecture where regional agencies and researchers can contribute updates.</p></li>
-<li><p><strong>Proposed dataset structure:</strong></p></li>
+<li><p><strong>Proposed dataset structure:</strong></p>
+<ul>
 <li><p><em>Salinity basemap layer:</em> one row per CARI waterbody, with <code>FEATURE_ID</code>, <code>GNIS_ID</code>, <code>WATERBODY_NAME</code>, <code>WATERBODY_TYPE</code>, <code>WET_SALINITY</code> and <code>DRY_SALINITY</code>. <code>GNIS_ID</code> allows cross-referencing with other state and federal datasets, since CARI does not keep standard USGS identifiers.</p></li>
 <li><p><em>Regulatory lookup table:</em> <code>FEATURE_ID</code>, <code>WET_BACTERIA_STANDARD</code>, <code>DRY_BACTERIA_STANDARD</code> and a <code>DATA_SCORE</code> showing whether the class comes from CARI or measured data. Keeping this separate means the bacteria logic can be rerun if the standards (such as the 1 ppth boundary) change.</p></li>
-<li><p><em>Data log:</em> <code>FEATURE_ID</code>, <code>SOURCE</code>, <code>STATION_ID</code>, <code>WET_SALINITY_PPT</code>, <code>DRY_SALINITY_PPT</code> for transparency, so every measurement-based class can be traced back to its stations.</p>
+<li><p><em>Data log:</em> <code>FEATURE_ID</code>, <code>SOURCE</code>, <code>STATION_ID</code>, <code>WET_SALINITY_PPT</code>, <code>DRY_SALINITY_PPT</code> for transparency, so every measurement-based class can be traced back to its stations.</p></li>
+</ul></li>
+</ul>
 <div class="callout callout-style-default callout-caution callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Upcoming code fixes: CEDEN deduplication happens before dropping empty results (cell 21). A station whose first record has an empty RESULT gets dropped entirely, even if it has valid records later. Need to swap the order. I also have some cleaning cells commented out, since I edited my database directly. Need to repull data, and test code again - confirming it edits copies of original database.
+<span class="screen-reader-only">Caution</span><strong>Upcoming code fixes:</strong> CEDEN deduplication happens before dropping empty results (cell 21). A station whose first record has an empty RESULT gets dropped entirely, even if it has valid records in later duplicates. Need to swap the order. I also have some cleaning cells commented out, since I edited my database directly. Need to repull data, and test code again - confirming it edits copies of original database.
 </div>
 </div>
 <div class="callout-body-container callout-body">
 
 </div>
-</div></li>
-</ul>
+</div>
 <hr>
 </section>
 <section id="analysis-procedure" class="level2">

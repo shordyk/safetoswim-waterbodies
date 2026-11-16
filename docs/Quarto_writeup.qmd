@@ -110,7 +110,7 @@ Coverage drops once data quality is considered *(Fig. 5)*. Only 3,233 sites (49%
 
 The 2,128 sites with no nearby station are concentrated in the Sierra Nevada, the northeast and the desert regions *(Fig. 6)*. These are mostly inland lakes and rivers outside CARI’s estuarine focus. Many of these sites are likely to be fresh, but there are known saline lakes in the same desert and eastern regions – such as the Salton Sea and Mono Lake. A full list of these sites, with each one’s nearest station and distance, is saved in `s2s_sites_no_salinity_station_250m.csv` for future reference.
 
-![(Fig. 6) Map of all Safe-to-Swim sites, sorted into those with a monitoring station nearby, those inside a CARI salinity polygon, and those with no station or CARI class. Highlights the spatial distribution of sites with no salinity data.](figures/07_s2s_no_salinity_station.png){fig-align="center" width="750"}
+![(Fig. 6) Map of all Safe-to-Swim sites, sorted into those with a monitoring station nearby, those inside a CARI salinity polygon, and those with no station or CARI class. Highlights the spatial distribution of sites with no salinity data.](figures/07_s2s_no_salinity_station.png){fig-align="center" width="680"}
 
 The monitoring data itself is also inconsistent. CEDEN records mix specific conductivity (\~690,000 records), salinity (\~478,000) and chloride (\~33,000), and about 60,000 conductivity records have the fraction listed as “Not Recorded.” Some coordinate locations also have more than one station code. Before this data can support a salinity database, these parameters would need to be converted to a common salinity measure.
 
@@ -128,15 +128,15 @@ The monitoring data itself is also inconsistent. CEDEN records mix specific cond
 
 - **Proposed dataset structure:**
 
-- *Salinity basemap layer:* one row per CARI waterbody, with `FEATURE_ID`, `GNIS_ID`, `WATERBODY_NAME`, `WATERBODY_TYPE`, `WET_SALINITY` and `DRY_SALINITY`. `GNIS_ID` allows cross-referencing with other state and federal datasets, since CARI does not keep standard USGS identifiers.
+  -  *Salinity basemap layer:* one row per CARI waterbody, with `FEATURE_ID`, `GNIS_ID`, `WATERBODY_NAME`, `WATERBODY_TYPE`, `WET_SALINITY` and `DRY_SALINITY`. `GNIS_ID` allows cross-referencing with other state and federal datasets, since CARI does not keep standard USGS identifiers.
 
-- *Regulatory lookup table:* `FEATURE_ID`, `WET_BACTERIA_STANDARD`, `DRY_BACTERIA_STANDARD` and a `DATA_SCORE` showing whether the class comes from CARI or measured data. Keeping this separate means the bacteria logic can be rerun if the standards (such as the 1 ppth boundary) change.
+  - *Regulatory lookup table:* `FEATURE_ID`, `WET_BACTERIA_STANDARD`, `DRY_BACTERIA_STANDARD` and a `DATA_SCORE` showing whether the class comes from CARI or measured data. Keeping this separate means the bacteria logic can be rerun if the standards (such as the 1 ppth boundary) change.
 
-- *Data log:* `FEATURE_ID`, `SOURCE`, `STATION_ID`, `WET_SALINITY_PPT`, `DRY_SALINITY_PPT` for transparency, so every measurement-based class can be traced back to its stations.
+  - *Data log:* `FEATURE_ID`, `SOURCE`, `STATION_ID`, `WET_SALINITY_PPT`, `DRY_SALINITY_PPT` for transparency, so every measurement-based class can be traced back to its stations.
 
-  ::: callout-caution
-  ## Upcoming code fixes: CEDEN deduplication happens before dropping empty results (cell 21). A station whose first record has an empty RESULT gets dropped entirely, even if it has valid records later. Need to swap the order. I also have some cleaning cells commented out, since I edited my database directly. Need to repull data, and test code again - confirming it edits copies of original database.
-  :::
+::: callout-caution
+## **Upcoming code fixes:** CEDEN deduplication happens before dropping empty results (cell 21). A station whose first record has an empty RESULT gets dropped entirely, even if it has valid records in later duplicates. Need to swap the order. I also have some cleaning cells commented out, since I edited my database directly. Need to repull data, and test code again - confirming it edits copies of original database.
+:::
 
 ------------------------------------------------------------------------
 

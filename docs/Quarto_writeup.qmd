@@ -35,7 +35,7 @@ Since 2019, [California’s statewide bacteria objectives](https://www.waterboar
 
 Beyond basic water quality, understanding salinity profiles is critical for evaluating broader ecological concerns—such as carbon sequestration dynamics, wetland resilience, and salt-water intrusion with rising sea levels. Sulfate, a very abundant anion in seawater, suppresses methane production, so salty tidal marshes (above about 18 ppt) act as reliable carbon sinks, while fresher marshes emit more methane overall and are much more sensitive to local environmental factors ([Poffenbarger et al. 2011](https://link.springer.com/article/10.1007/s13157-011-0197-0)). This ongoing research involving salinity and carbon sequestration is likely a key reason that the San Francisco Estuary Institute developed **CARI** (California Aquatic Resource Inventory) and further demonstrates the need for salinity models and databases.
 
-Early exploration of datasets and monitoring revealed that the coverage is likely too sparse to immediately develop a state-wide salinity database. Thus this project shifted from building the database do documenting the current state of salinity data, with a thorough exploration of complex waterbody datasets (CARI) and state-wide sampling efforts, in order to inform future monitoring efforts and provide a foundation for a future attempt at the database. **In this analysis, I asses CARI's salinity coverage throughout the state, as well and explore monitoring data coverage at current Safe-to-Swim sites with sampling data from CEDEN and NWIS in order to provide a clear picture of which Safe-to-Swim sites have recent and consistent salinity measurements.**
+Early exploration of datasets and monitoring revealed that the coverage is likely too sparse to immediately develop a state-wide salinity database. Thus this project shifted from building the database do documenting the current state of salinity data, with a thorough exploration of complex waterbody datasets (CARI) and state-wide sampling efforts, in order to inform future monitoring efforts and provide a foundation for a future attempt at the database. **In this analysis, I asses CARI's salinity coverage throughout the state, and explore monitoring data coverage at current Safe-to-Swim sites with sampling data from CEDEN and NWIS in order to provide a clear picture of which Safe-to-Swim sites have recent and consistent salinity measurements.**
 
 ------------------------------------------------------------------------
 
@@ -76,19 +76,18 @@ For future analyses, another relevant dataset is the **NWI** (National Wetlands 
 
 ## 3. Results & Discussion
 
-Overall, CARI’s salinity classification covers only a small portion of Safe-to-Swim sites, while monitoring data appears to cover many more sites (before recency and sampling frequency are considered). Section **3A** summarizes CARI’s salinity coverage and how to interpret it *(Figures 1–3)*. Section **3B** looks at how many Safe-to-Swim sites have nearby CEDEN or NWIS salinity data, and how much of that data is recent and consistent enough to use (*Figures 4–7)*.
+Overall, CARI’s salinity classification covers only a small portion of Safe-to-Swim sites, while monitoring data appears to cover many more sites (before recency and sampling frequency are considered). **Section 3A** summarizes CARI’s salinity coverage and how to interpret it *(Figures 1–2)*. **Section 3B** looks at how many Safe-to-Swim sites have nearby CEDEN or NWIS salinity data, and how much of that data is recent and consistent enough to use (*Figures 3–6)*.
 
 ### 3A. CARI Investigation
 
-Of the 1,287,921 polygons in CARI, 371,872 (28.9%) have a salinity modifier. Most of these are classified as Saline (66%), followed by Mesohaline (15%), Oligohaline (11%) and Fresh (7%). The most common feature types are tidal marsh, eelgrass and tidal flats (Figure 2), which reflects the modifier’s original purpose of blue carbon quantification.
+Of the 1,287,921 polygons in CARI, 371,872 (28.9%) have a salinity modifier. Most of these are classified as Saline (66%), followed by Mesohaline (15%), Oligohaline (11%) and Fresh (7%). The most common feature types are tidal marsh, eelgrass and tidal flats *(Fig. 1b)*, which reflects the modifier’s original purpose of blue carbon quantification.
 
 ::: {#fig-cari layout-ncol="2"}
-![(CARI polygons by major class](figures/O1_cari_majorclass.png){#fig-cari-class}
+![CARI polygons by major class](figures/O1_cari_majorclass.png){#fig-cari-class}
 
-![Most common CARI waterbody types](figures/O2_cari_waterbody_type.png){#fig-cari-type}
+![Most common CARI waterbody types with salinity modifiers.](figures/O2_cari_waterbody_type.png){#fig-cari-type}
 
-
-Despite CARI's statewide coverage, the salinity information is much more localized. The polygons with assigned saline classes are limited to the coast, the San Francisco Bay–Delta and coastal estuaries (Figure 3). As a result, only 1,253 of the 6,648 Safe-to-Swim sites (19%) fall inside a CARI salinity polygon. Before understanding CARI's salinity designation process, the intention was to use CARI's salinity designation as the primary modifier for every waterbody, and verify this designation with monitoring data. Because of this, I cross-referenced my salinity sampling data to classified polygons, and found that only about 0.2% of classified polygons contain a CEDEN or NWIS salinity station from my dataset. This made clear that our initial approach to the database design would be not feasible.
+Despite CARI's statewide coverage, the salinity information is much more localized. The polygons with assigned saline classes are limited to the coast, the San Francisco Bay–Delta and coastal estuaries (*Fig. 2).* As a result, only 1,253 of the 6,648 Safe-to-Swim sites (19%) fall inside a CARI salinity polygon. Before understanding CARI's salinity designation process, the intention was to use CARI's salinity designation as the primary modifier for every waterbody, and verify this designation with monitoring data. Because of this, I cross-referenced my salinity sampling data to classified polygons, and found that only about 0.2% of classified polygons contain a CEDEN or NWIS salinity station from my dataset. This made clear that our initial approach to the database design would be not feasible.
 :::
 
 ![(Fig. 2) Spatial distribution of CARI waterbody polygons with salinity modifers.](figures/03_cari_salinity_distribution.png){fig-align="center" width="650"}
@@ -97,28 +96,47 @@ Reflecting more on CARI, it is important to note that CARI’s classes do not ma
 
 ### 3B. Monitoring Data Coverage at Safe-to-Swim Sites
 
-To assess monitoring coverage, I looked for CEDEN and NWIS salinity stations within 250 m of each Safe-to-Swim site (Figure 4). At a first, the glance coverage looks broad: 4,520 sites (68%) have at least one station nearby (Figure 6). CEDEN provides nearly all of this coverage, and NWIS adds only 166 sites (2%) on its own. Much of the overlap exists because 3,122 Safe-to-Swim sites are themselves CEDEN stations, where specific conductivity is likely recorded during routine sampling. NWIS coverage is likely understated, since my NWIS query did not include stream sites.
+To assess monitoring coverage, I looked for CEDEN and NWIS salinity stations within 250 m of each Safe-to-Swim site *(Fig. 3)*. At a first, the glance coverage looks broad: 4,520 sites (68%) have at least one station nearby (*Fig. 5*). CEDEN provides nearly all of this coverage, and NWIS adds only 166 sites (2%) on its own. Much of the overlap exists because 3,122 Safe-to-Swim sites are themselves CEDEN stations, where specific conductivity is likely recorded during routine sampling. NWIS coverage is likely understated, since my NWIS query did not include stream sites.
 
 ### 
 
-![(Fig. 3) Map of CEDEN and NWIS sites included in my salinity sampling dataset, and Safe-to-Swim monitioring locations, to see spatial distribution.](figures/04d_all_coverage.png){width="600"}
+![(Fig. 3) Map of CEDEN and NWIS sites included in my salinity sampling dataset, and Safe-to-Swim monitoring locations, to see spatial distribution.](figures/04d_all_coverage.png){width="600"}
 
-Coverage drops once data quality is considered (Figure 5). Only 3,233 sites (49%) have a nearby station sampled in the last 10 years, and 2,594 (39%) have at least four recent sampling dates. Four dates is a low bar for checking the 95%-of-the-year salinity test, so this should be read as a screening threshold. Combining CARI with usable monitoring data, 3,525 Safe-to-Swim sites (53%) could currently be classified. That leaves 47% without a defensible salinity class.
+Coverage drops once data quality is considered *(Fig. 5)*. Only 3,233 sites (49%) have a nearby station sampled in the last 10 years, and 2,594 (39%) have at least four recent sampling dates. Four dates is a low bar for checking the 95%-of-the-year salinity test, so this should be read as a screening threshold. Combining CARI with usable monitoring data, 3,525 Safe-to-Swim sites (53%) could currently be classified. That leaves 47% without a defensible salinity class.
 
 ![(Fig. 4) Map displaying the distribution of Safe-to-Swim sites with a CEDEN or NWIS monitoring station within 250m, and a bar chart showing the sites by data source.](figures/06_s2s_by_data_source.png)
 
 ![(Fig. 5) Bar chart showing the Safe-to-Swim sites with useable salinity monitoring or classification, at each stage of elimination.](figures/05_s2s_coverage_funnel.png)
 
-The 2,128 sites with no nearby station are concentrated in the Sierra Nevada, the northeast and the desert regions (Figure 7). These are mostly inland lakes and rivers outside CARI’s estuarine focus. Many of these sites are likely to be fresh, but there are known saline lakes in the same desert and eastern regions – such as the Salton Sea and Mono lake. A full list of these sites, with each one’s nearest station and distance, is saved in `s2s_sites_no_salinity_station_250m.csv` for future reference.
+The 2,128 sites with no nearby station are concentrated in the Sierra Nevada, the northeast and the desert regions *(Fig. 6)*. These are mostly inland lakes and rivers outside CARI’s estuarine focus. Many of these sites are likely to be fresh, but there are known saline lakes in the same desert and eastern regions – such as the Salton Sea and Mono lake. A full list of these sites, with each one’s nearest station and distance, is saved in `s2s_sites_no_salinity_station_250m.csv` for future reference.
 
-![(Fig. 6) Map of all Safe-to-Swim sites, sorted into those with a montioring station nearby, those inside a CARI salinity polygon, and those with no station or CARI class. Highlights the spatial distribution of sites with no salinity data. ](figures/07_s2s_no_salinity_station.png){fig-align="center" width="750"}
+![(Fig. 6) Map of all Safe-to-Swim sites, sorted into those with a monitoring station nearby, those inside a CARI salinity polygon, and those with no station or CARI class. Highlights the spatial distribution of sites with no salinity data.](figures/07_s2s_no_salinity_station.png){fig-align="center" width="750"}
 
 The monitoring data itself is also inconsistent. CEDEN records mix specific conductivity (\~690,000 records), salinity (\~478,000) and chloride (\~33,000), and about 60,000 conductivity records have the fraction listed as “Not Recorded.” Some coordinate locations also have more than one station code. Before this data can support a salinity database, these parameters would need to be converted to a common salinity measure.
 
 ## 4. Future Work & Intentions
 
+- **Standardize salinity measurements.** Convert specific conductance and chloride to salinity (ppt) using a standard relationship, so all three parameters can be compared against the 1 ppth cutoff.
+
+- **Seasonal salinity values.** Aggregate measurements by month and summarize them for wet and dry seasons, since salinity can shift seasonally, especially in estuaries and bar-built lagoons. The time window for these averages should be tested to see how much it changes the result.
+
+- **Use CARI where it applies, add measurements.** Keep CARI’s estuarine classes as the default along the coast. Focus measurement-based classification on waterbodies labeled N/A, Fresh or Undefined, and on Oligohaline sites that straddle the 1 ppth cutoff. Use the 322 Safe-to-Swim sites that have both a CARI class and usable monitoring data to check agreement between the two.
+
+- **Expand inland coverage.** Add CARI’s stream (line) features and NWIS stream sites, both excluded from this analysis. For inland sites with no data, apply a documented freshwater default, with known saline lakes (e.g., Salton Sea, Mono Lake) flagged as exceptions.
+
 - **Shared Contributable Database:** Transitioning toward a collaborative, open-access database architecture where regional agencies and researchers can contribute updates.
-- **Expanded Monitoring Integration:** Expanding automated ingestion pipelines to capture ongoing conductivity and total dissolved solids (TDS) metrics across state watersheds.
+
+- **Proposed dataset structure:**
+
+- *Salinity basemap layer:* one row per CARI waterbody, with `FEATURE_ID`, `GNIS_ID`, `WATERBODY_NAME`, `WATERBODY_TYPE`, `WET_SALINITY` and `DRY_SALINITY`. `GNIS_ID` allows cross-referencing with other state and federal datasets, since CARI does not keep standard USGS identifiers.
+
+- *Regulatory lookup table:* `FEATURE_ID`, `WET_BACTERIA_STANDARD`, `DRY_BACTERIA_STANDARD` and a `DATA_SCORE` showing whether the class comes from CARI or measured data. Keeping this separate means the bacteria logic can be rerun if the standards (such as the 1 ppth boundary) change.
+
+- *Data log:* `FEATURE_ID`, `SOURCE`, `STATION_ID`, `WET_SALINITY_PPT`, `DRY_SALINITY_PPT` for transparency, so every measurement-based class can be traced back to its stations.
+
+  ::: callout-caution
+  ## Upcoming code fixes: CEDEN deduplication happens before dropping empty results (cell 21). A station whose first record has an empty RESULT gets dropped entirely, even if it has valid records later. Need to swap the order. I also have some cleaning cells commented out, since I edited my database directly. Need to repull data, and test code again - confirming it edits copies of original database. 
+  :::
 
 ------------------------------------------------------------------------
 
@@ -128,10 +146,16 @@ The monitoring data itself is also inconsistent. CEDEN records mix specific cond
 
 - **`geopandas` & `pyogrio`:** Vector spatial data ingestion (`.gdb` layers), CRS management, and spatial joins/intersections.
 - **`pandas` & `numpy`:** Tabular data cleaning, filtering placeholder values, and summary aggregations.
-- **`matplotlib` & `seaborn`:** Generating static summary charts and spatial maps exported to `docs/figures/`.
+- **`matplotlib` :** Generating static summary charts and spatial maps exported to `docs/figures/`.
 
 ### Major Processing Steps
 
-1.  **Data Ingestion & CRS Verification:** Loaded tabular exports (CEDEN, NWIS, S2S) and read the `CARI_Polygons` layer directly from the File Geodatabase.
-2.  **Attribute Filtering:** Removed null and placeholder salinity entries (`"Undefined"`, `"N/A"`, `"n/a"`) to isolate verified salinity-modified polygons.
+1.  **Data Ingestion & CRS Verification:** Loaded tabular exports (CEDEN, NWIS, S2S) in and read the `CARI_Polygons` layer directly from the CARI Geodatabase.
+2.  **Initial Filtering:** Removed null and placeholder salinity entries (`"Undefined"`, `"N/A"`, `"n/a"`) to isolate salinity-modified polygons.
 3.  **Spatial Joins & Overlap Checks:** Cross-referenced point monitoring stations (CEDEN, NWIS, S2S) against CARI polygon boundaries to assess coverage gaps and dropped features.
+4.  **Monitoring data cleaning.** For both CEDEN and NWIS, removed records with missing coordinates or result values. Reduced CEDEN to unique station locations by `STATIONCODE` and `STATIONNAME`, and NWIS by `MonitoringLocationIdentifier` and coordinates. NWIS contained specific conductance (944,295 records), salinity (356,827) and chloride (127,756).
+5.  **Reprojection.** All point datasets were converted to geometries and reprojected to EPSG:6414 (California Albers, meters) to match CARI. Maps were displayed in EPSG:4326.
+6.  **Polygon matching.** Monitoring stations and Safe-to-Swim sites were spatially joined to the salinity-classified CARI polygons using an intersects join, keeping all matches. 632 of 371,872 classified polygons (\~0.2%) contain a CEDEN or NWIS station.
+7.  **Safe-to-Swim buffer analysis.** Each Safe-to-Swim site was buffered by 250 m and intersected with CEDEN and NWIS station locations to find locations with nearby monitoring data.
+8.  **Usability screening.** For each station, I calculated the last sampling date and the number of distinct sampling dates. “Recent” means sampled in the last 10 years, and “usable” means at least 4 distinct recent sampling dates. Counting dates rather than records keeps continuous loggers from inflating coverage.
+9.  **Outputs.** Figures were saved to `docs/figures/`, and the list of Safe-to-Swim sites with no nearby station was saved to `data/processed/s2s_sites_no_salinity_station_250m.csv`.

@@ -20,7 +20,7 @@ format:
               const img = document.createElement("img");
               img.src = "figures/logo.png";
               img.alt = "Logo";
-              img.style.cssText = "width: 80%; margin-top: 1.5rem; display: block;";
+              img.style.cssText = "width: 95%; margin-top: 1.5rem; display: block;";
               toc.appendChild(img);
             }
           });
@@ -135,7 +135,7 @@ The monitoring data itself is also inconsistent. CEDEN records mix specific cond
 - *Data log:* `FEATURE_ID`, `SOURCE`, `STATION_ID`, `WET_SALINITY_PPT`, `DRY_SALINITY_PPT` for transparency, so every measurement-based class can be traced back to its stations.
 
   ::: callout-caution
-  ## Upcoming code fixes: CEDEN deduplication happens before dropping empty results (cell 21). A station whose first record has an empty RESULT gets dropped entirely, even if it has valid records later. Need to swap the order. I also have some cleaning cells commented out, since I edited my database directly. Need to repull data, and test code again - confirming it edits copies of original database. 
+  ## Upcoming code fixes: CEDEN deduplication happens before dropping empty results (cell 21). A station whose first record has an empty RESULT gets dropped entirely, even if it has valid records later. Need to swap the order. I also have some cleaning cells commented out, since I edited my database directly. Need to repull data, and test code again - confirming it edits copies of original database.
   :::
 
 ------------------------------------------------------------------------

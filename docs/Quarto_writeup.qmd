@@ -1,17 +1,14 @@
 ---
-
----
-title: "Assessment of Salinity Databases and Monitoring Coverage across California"
- - name: "Samantha Hordyk"
+title: "Salinity Classification and Monitoring Coverage for Safe-to-Swim Sites"
+author:
+  - name: "Samantha Hordyk"
     affiliations:
-      - name: "Scientific Aid, Office of Information Management and Analysis. California State Water Resources Control Board"
+      - name: "Scientific Aid - Office of Information Management and Analysis, California State Water Resources Control Board"
 date: today
-date: last-modified
 format:
   html:
-    code-fold: true
     toc: true
-    toc-location: right   # or left
+    toc-location: right
     include-after-body:
       text: |
         <script>
@@ -26,8 +23,6 @@ format:
           }
         });
         </script>
-    toc-depth: 3
-    theme: cosmo
 ---
 
 ## 1. Introduction & Project Framing

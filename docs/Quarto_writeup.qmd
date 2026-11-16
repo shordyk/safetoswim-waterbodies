@@ -20,7 +20,7 @@ format:
               const img = document.createElement("img");
               img.src = "figures/logo.png";
               img.alt = "Logo";
-              img.style.cssText = "width: 95%; margin-top: 1.5rem; display: block;";
+              img.style.cssText = "width: 99%; margin-top: 1.5rem; display: block;";
               toc.appendChild(img);
             }
           });
@@ -29,13 +29,13 @@ format:
 
 ## 1. Introduction & Project Framing
 
-The intention of this project is to assess the status of salinity classification and monitoring coverage across the state of California, with the aim of using this information to develop a database of salinity classifications for major waterbodies. The main use-case for this database is to support the **California Water Boards' Safe-To-Swim (S2S) map** which displays bacterial sampling results for both coastal and inland swimming sites. These sampling results are compared to statewide bacteria water quality standards in order to protect recreational users from the effects of pathogens, and these standards rely on salinity data.
+The intention of this project is to assess the status of salinity classification and monitoring coverage across the state of California, with the aim of using this information to develop a database of salinity classifications for major waterbodies. The main use-case for this database is to support the **California Water Boards' Safe-to-Swim (S2S) [map](https://mywaterquality.ca.gov/safe-to-swim/content/interactive_map/)** which displays bacterial sampling results for both coastal and inland swimming sites. These sampling results are compared to statewide bacteria water quality standards in order to protect recreational users from the effects of pathogens, and these standards rely on salinity data.
 
 Since 2019, [California’s statewide bacteria objectives](https://www.waterboards.ca.gov/bacterialobjectives/) for water contact recreation have depended on a certain salinity cut-off. Waters at or below 1 ppth salinity for at least 95% of the year are assessed for *E. coli*, and waters above 1 ppth more than 5% of the year are assessed for enterococci. Both indicators are set at the same illness-risk level. Applying the right standard at a Safe-to-Swim site therefore requires knowing not just whether the site is fresh or saline, but how its salinity behaves across a full year – creating a need for consistent salinity monitoring coverage.
 
-Beyond basic water quality, understanding salinity profiles is critical for evaluating broader ecological concerns—such as carbon sequestration dynamics, wetland resilience, and salt-water intrusion with rising sea levels. Sulfate, a very abundant anion in seawater, suppresses methane production, so salty tidal marshes (above about 18 ppt) act as reliable carbon sinks, while fresher marshes emit more methane overall and are much more sensitive to local environmental factors ([Poffenbarger et al. 2011](https://link.springer.com/article/10.1007/s13157-011-0197-0)). This ongoing research involving salinity and carbon sequestration is likely a key reason that the San Francisco Estuary Institute developed **CARI** (California Aquatic Resource Inventory) and further demonstrates the need for salinity models and databases.
+Beyond basic water quality, understanding salinity profiles is critical for evaluating broader ecological concerns—such as carbon sequestration dynamics, wetland resilience, and salt-water intrusion with rising sea levels. Sulfate, a very abundant anion in seawater, suppresses methane production, so salty tidal marshes (above about 18 ppth) act as reliable carbon sinks, while fresher marshes emit more methane overall and are much more sensitive to local environmental factors ([Poffenbarger et al. 2011](https://link.springer.com/article/10.1007/s13157-011-0197-0)). This ongoing research involving salinity and carbon sequestration is likely a key reason that the San Francisco Estuary Institute developed **CARI** (California Aquatic Resource Inventory) and further demonstrates the need for salinity models and databases.
 
-Early exploration of datasets and monitoring revealed that the coverage is likely too sparse to immediately develop a state-wide salinity database. Thus this project shifted from building the database do documenting the current state of salinity data, with a thorough exploration of complex waterbody datasets (CARI) and state-wide sampling efforts, in order to inform future monitoring efforts and provide a foundation for a future attempt at the database. **In this analysis, I asses CARI's salinity coverage throughout the state, and explore monitoring data coverage at current Safe-to-Swim sites with sampling data from CEDEN and NWIS in order to provide a clear picture of which Safe-to-Swim sites have recent and consistent salinity measurements.**
+Early exploration of datasets and monitoring revealed that the coverage is likely too sparse to immediately develop a state-wide salinity database. Thus this project shifted from building the database to documenting the current state of salinity data, with a thorough exploration of complex waterbody datasets (CARI) and state-wide sampling efforts, in order to inform future monitoring efforts and provide a foundation for a future attempt at the database. **In this analysis, I assess CARI's salinity coverage throughout the state, and explore monitoring data coverage at current Safe-to-Swim sites with sampling data from CEDEN and NWIS in order to provide a clear picture of which Safe-to-Swim sites have recent and consistent salinity measurements.**
 
 ------------------------------------------------------------------------
 
@@ -51,7 +51,7 @@ This analysis pulls from four data repositories:
 
 - **Safe-to-Swim (S2S):** Current monitoring station locations (`S2S_stations.csv`).
 
-After a preliminary data exploration, it was clear that there is no single standard for salinity monitoring. The two monitoring databases, CEDEN and NWIS, have a vast range of salinity-related measurements – some discrete, some continuous, and with a range of relevant analytes, from chloride to chemical measurements of salinity. There is also no statewide salinity layer that exists for inland waters. CARI, an aquatic inventory developed in 2009 which is based on data from the National Wetland Inventory and the National Hydropgraphy Dataset, focuses its salinity modifiers mainly on coastal and estuary systems.
+After a preliminary data exploration, it was clear that there is no single standard for salinity monitoring. The two monitoring databases, CEDEN and NWIS, have a vast range of salinity-related measurements – some discrete, some continuous, and with a range of relevant analytes, from chloride to chemical measurements of salinity. There is also no statewide salinity layer that exists for inland waters. CARI, an aquatic inventory developed in 2009 which is based on data from the National Wetland Inventory and the National Hydrography Dataset, focuses its salinity modifiers mainly on coastal and estuary systems.
 
 ::: callout-note
 ### Note on CARI Salinity Classification
@@ -68,8 +68,8 @@ For future analyses, another relevant dataset is the **NWI** (National Wetlands 
 ::: callout-tip
 ### Data Extraction Details
 
-- **NWIS** - Queried via REST API for discrete values on 9/3/2026. No limits on dates. Site types: Estuary, Lake, Resevoir, Wetland. Parameter codes: 00480 (Salinity, ppt) 00095 (Specific Conductance), 00940 (Chloride). Original data file shape: (1428878, 81)
-- **CEDEN** - Queried from main site on 8/21/2026. Exported as TSV with analytes: ('Salinity, Total', 'Salinity', 'Salinity, Dissolved', 'SpecificConducitivity, Total'. 'SpecificConductivity', 'SpecificConductivity, Not Recorded', 'SpecificConductivity, Dissolved', 'Chloride, Total')
+- **NWIS** - Queried via REST API for discrete values on 9/3/2026. No limits on dates. Site types: Estuary, Lake, Reservoir, Wetland. Parameter codes: 00480 (Salinity, ppt) 00095 (Specific Conductance), 00940 (Chloride). Original data file shape: (1428878, 81)
+- **CEDEN** - Queried from main site on 8/21/2026. Exported as TSV with analytes: ('Salinity, Total', 'Salinity', 'Salinity, Dissolved', 'SpecificConductivity, Total', 'SpecificConductivity', 'SpecificConductivity, Not Recorded', 'SpecificConductivity, Dissolved', 'Chloride, Total')
 :::
 
 ------------------------------------------------------------------------
@@ -87,16 +87,16 @@ Of the 1,287,921 polygons in CARI, 371,872 (28.9%) have a salinity modifier. Mos
 
 ![Most common CARI waterbody types with salinity modifiers.](figures/O2_cari_waterbody_type.png){#fig-cari-type}
 
-Despite CARI's statewide coverage, the salinity information is much more localized. The polygons with assigned saline classes are limited to the coast, the San Francisco Bay–Delta and coastal estuaries (*Fig. 2).* As a result, only 1,253 of the 6,648 Safe-to-Swim sites (19%) fall inside a CARI salinity polygon. Before understanding CARI's salinity designation process, the intention was to use CARI's salinity designation as the primary modifier for every waterbody, and verify this designation with monitoring data. Because of this, I cross-referenced my salinity sampling data to classified polygons, and found that only about 0.2% of classified polygons contain a CEDEN or NWIS salinity station from my dataset. This made clear that our initial approach to the database design would be not feasible.
+Despite CARI's statewide coverage, the salinity information is much more localized. The polygons with assigned saline classes are limited to the coast, the San Francisco Bay–Delta and coastal estuaries (*Fig. 2).* As a result, only 1,253 of the 6,648 Safe-to-Swim sites (19%) fall inside a CARI salinity polygon. Before understanding CARI's salinity designation process, the intention was to use CARI's salinity designation as the primary modifier for every waterbody, and verify this designation with monitoring data. Because of this, I cross-referenced my salinity sampling data to classified polygons, and found that only about 0.2% of classified polygons contain a CEDEN or NWIS salinity station from my dataset. This made clear that our initial approach to the database design would not be feasible.
 :::
 
-![(Fig. 2) Spatial distribution of CARI waterbody polygons with salinity modifers.](figures/03_cari_salinity_distribution.png){fig-align="center" width="650"}
+![(Fig. 2) Spatial distribution of CARI waterbody polygons with salinity modifiers.](figures/03_cari_salinity_distribution.png){fig-align="center" width="650"}
 
 Reflecting more on CARI, it is important to note that CARI’s classes do not map directly onto the bacteria standards. The Oligohaline class (0.5–5 ppt) straddles the 1 ppth cutoff, so a site in this class could fall under either the E. coli or the enterococci objective. More fundamentally, CARI assigns one dominant class per polygon, while the bacteria objectives depend on how often salinity exceeds 1 ppth across a full year. Applying CARI’s classes to the bacteria standards would therefore still require measured data.
 
 ### 3B. Monitoring Data Coverage at Safe-to-Swim Sites
 
-To assess monitoring coverage, I looked for CEDEN and NWIS salinity stations within 250 m of each Safe-to-Swim site *(Fig. 3)*. At a first, the glance coverage looks broad: 4,520 sites (68%) have at least one station nearby (*Fig. 5*). CEDEN provides nearly all of this coverage, and NWIS adds only 166 sites (2%) on its own. Much of the overlap exists because 3,122 Safe-to-Swim sites are themselves CEDEN stations, where specific conductivity is likely recorded during routine sampling. NWIS coverage is likely understated, since my NWIS query did not include stream sites.
+To assess monitoring coverage, I looked for CEDEN and NWIS salinity stations within 250 m of each Safe-to-Swim site *(Fig. 3)*. At a first glance, the coverage looks broad: 4,520 sites (68%) have at least one station nearby (*Fig. 5*). CEDEN provides nearly all of this coverage, and NWIS adds only 166 sites (2%) on its own. Much of the overlap exists because 3,122 Safe-to-Swim sites are themselves CEDEN stations, where specific conductivity is likely recorded during routine sampling. NWIS coverage is likely understated, since my NWIS query did not include stream sites.
 
 ### 
 
@@ -106,9 +106,9 @@ Coverage drops once data quality is considered *(Fig. 5)*. Only 3,233 sites (49%
 
 ![(Fig. 4) Map displaying the distribution of Safe-to-Swim sites with a CEDEN or NWIS monitoring station within 250m, and a bar chart showing the sites by data source.](figures/06_s2s_by_data_source.png)
 
-![(Fig. 5) Bar chart showing the Safe-to-Swim sites with useable salinity monitoring or classification, at each stage of elimination.](figures/05_s2s_coverage_funnel.png)
+![(Fig. 5) Bar chart showing the Safe-to-Swim sites with usable salinity monitoring or classification, at each stage of elimination.](figures/05_s2s_coverage_funnel.png)
 
-The 2,128 sites with no nearby station are concentrated in the Sierra Nevada, the northeast and the desert regions *(Fig. 6)*. These are mostly inland lakes and rivers outside CARI’s estuarine focus. Many of these sites are likely to be fresh, but there are known saline lakes in the same desert and eastern regions – such as the Salton Sea and Mono lake. A full list of these sites, with each one’s nearest station and distance, is saved in `s2s_sites_no_salinity_station_250m.csv` for future reference.
+The 2,128 sites with no nearby station are concentrated in the Sierra Nevada, the northeast and the desert regions *(Fig. 6)*. These are mostly inland lakes and rivers outside CARI’s estuarine focus. Many of these sites are likely to be fresh, but there are known saline lakes in the same desert and eastern regions – such as the Salton Sea and Mono Lake. A full list of these sites, with each one’s nearest station and distance, is saved in `s2s_sites_no_salinity_station_250m.csv` for future reference.
 
 ![(Fig. 6) Map of all Safe-to-Swim sites, sorted into those with a monitoring station nearby, those inside a CARI salinity polygon, and those with no station or CARI class. Highlights the spatial distribution of sites with no salinity data.](figures/07_s2s_no_salinity_station.png){fig-align="center" width="750"}
 
@@ -122,7 +122,7 @@ The monitoring data itself is also inconsistent. CEDEN records mix specific cond
 
 - **Use CARI where it applies, add measurements.** Keep CARI’s estuarine classes as the default along the coast. Focus measurement-based classification on waterbodies labeled N/A, Fresh or Undefined, and on Oligohaline sites that straddle the 1 ppth cutoff. Use the 322 Safe-to-Swim sites that have both a CARI class and usable monitoring data to check agreement between the two.
 
-- **Expand inland coverage.** Add CARI’s stream (line) features and NWIS stream sites, both excluded from this analysis. For inland sites with no data, apply a documented freshwater default, with known saline lakes (e.g., Salton Sea, Mono Lake) flagged as exceptions.
+- **Expand inland coverage.** Add CARI’s stream (line) features and NWIS stream sites, both excluded from this analysis. For inland sites with no data, apply a documented freshwater default, with known saline lakes (e.g., Salton Sea, Mono Lake) flagged as exceptions. Could also draw from other sampling datasets, refer to sources for CARI, and reach out to the Integrated Report for more data.
 
 - **Shared Contributable Database:** Transitioning toward a collaborative, open-access database architecture where regional agencies and researchers can contribute updates.
 

@@ -8,7 +8,7 @@
 
 }
 
-\subcaption{\label{fig-cari-class}CARI polygons by major class}
+\subcaption{\label{fig-cari-class}CARI polygons by major class.}
 
 \end{minipage}%
 %
@@ -24,6 +24,9 @@
 salinity modifiers.}
 
 \end{minipage}%
+
+\caption{\label{fig-cari}CARI classification of waterbodies: (a) major
+class and (b) waterbody type with salinity modifiers.}
 
 \end{figure}
 \efloatseparator
@@ -80,7 +83,7 @@ salinity monitoring or classification, at each stage of elimination.}
  
 \begin{figure}[H]
 
-{\centering \includegraphics[width=7.08333in,height=\textheight,keepaspectratio]{figures/07_s2s_no_salinity_station.png}
+{\centering \includegraphics[width=6.66667in,height=\textheight,keepaspectratio]{figures/07_s2s_no_salinity_station.png}
 
 }
 

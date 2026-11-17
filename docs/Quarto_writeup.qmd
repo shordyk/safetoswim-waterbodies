@@ -25,6 +25,51 @@ format:
             }
           });
           </script>
+  pdf:
+    documentclass: scrartcl
+    classoption: [parskip=half]
+    toc: true
+    toc-depth: 2
+    geometry:
+      - margin=1in
+      - top=0.75in
+    fontsize: 11pt
+    colorlinks: true
+    linkcolor: "cablue"
+    urlcolor: "cablue"
+    include-in-header:
+      - text: |
+          % modern sans font for everything
+          \usepackage[default]{sourcesanspro}
+          \usepackage{xcolor}
+          \definecolor{cablue}{HTML}{1F4E79}
+          % headings: blue, clean
+          \addtokomafont{disposition}{\color{cablue}}
+          \setkomafont{title}{\sffamily\Large\bfseries\color{cablue}}
+          \setkomafont{author}{\normalsize}
+          \setkomafont{date}{\small}
+          % cap each image so two fit per page with their captions
+          \setkeys{Gin}{width=0.9\linewidth,height=0.38\textheight,keepaspectratio}
+          % let LaTeX stack two large floats on one page
+          \renewcommand{\topfraction}{0.95}
+          \renewcommand{\bottomfraction}{0.95}
+          \renewcommand{\textfraction}{0.05}
+          \renewcommand{\floatpagefraction}{0.85}
+          \setcounter{topnumber}{2}
+          \setcounter{bottomnumber}{2}
+          \setcounter{totalnumber}{2}
+          % move all figures to the end
+          \usepackage[nomarkers,nolists,figuresonly]{endfloat}
+          \renewcommand{\efloatseparator}{\vspace{1.5em}}
+          \renewcommand{\efloatheading}[1]{\section*{Figures}}
+    include-before-body:
+      - text: |
+          \vspace{-2em}
+          \begin{center}
+          \includegraphics[width=0.22\textwidth,height=1in,keepaspectratio]{figures/logo.png}\\[0.5em]
+          {\small Interactive version: \href{https://shordyk.github.io/safetoswim-waterbodies/}{shordyk.github.io/safetoswim-waterbodies}}
+          \end{center}
+          \vspace{-1em}
 ---
 
 ## 1. Introduction & Project Framing
@@ -135,7 +180,7 @@ The monitoring data itself is also inconsistent. CEDEN records mix specific cond
   - *Data log:* `FEATURE_ID`, `SOURCE`, `STATION_ID`, `WET_SALINITY_PPT`, `DRY_SALINITY_PPT` for transparency, so every measurement-based class can be traced back to its stations.
 
 ::: callout-caution
-## **Upcoming code fixes as of 11/16/2026 :** CEDEN deduplication happens before dropping empty results (cell 21). A station whose first record has an empty RESULT gets dropped entirely, even if it has valid records in later duplicates. Need to swap the order. I also have some cleaning cells commented out, since I edited my database directly. Need to repull data, and test code again - confirming it edits copies of original database. Will also be creating an environment file. 
+## **Upcoming code fixes as of 11/16/2026 :** CEDEN deduplication happens before dropping empty results (cell 21). A station whose first record has an empty RESULT gets dropped entirely, even if it has valid records in later duplicates. Need to swap the order. I also have some cleaning cells commented out, since I edited my database directly. Need to repull data, and test code again - confirming it edits copies of original database. Will also be creating an environment file.
 :::
 
 ------------------------------------------------------------------------

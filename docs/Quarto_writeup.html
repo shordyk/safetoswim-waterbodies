@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#major-processing-steps" id="toc-major-processing-steps" class="nav-link" data-scroll-target="#major-processing-steps">Major Processing Steps</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="..\Quarto_writeup.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -214,7 +214,7 @@ Figure&nbsp;1
 </section>
 <section id="b.-monitoring-data-coverage-at-safe-to-swim-sites" class="level3">
 <h3 class="anchored" data-anchor-id="b.-monitoring-data-coverage-at-safe-to-swim-sites">3B. Monitoring Data Coverage at Safe-to-Swim Sites</h3>
-<p>To assess monitoring coverage, I looked for CEDEN and NWIS salinity stations within 250 m of each Safe-to-Swim site <em>(Fig. 3)</em>. At a first glance, the coverage looks broad: 4,520 sites (68%) have at least one station nearby (<em>Fig. 5</em>). CEDEN provides nearly all of this coverage, and NWIS adds only 166 sites (2%) on its own. Much of the overlap exists because 3,122 Safe-to-Swim sites are themselves CEDEN stations, where specific conductivity is likely recorded during routine sampling. NWIS coverage is likely understated, since my NWIS query did not include stream sites.</p>
+<p>To assess monitoring coverage, I looked for CEDEN and NWIS salinity stations within 250 m of each Safe-to-Swim site <em>(Fig. 3)</em>. At a first glance, the coverage looks broad: 4,520 sites (68%) have at least one station nearby (<em>Fig. 5</em>). CEDEN provides nearly all of this coverage, and NWIS adds only 166 sites (2%) on its own. Much of the overlap exists because 3,122 Safe-to-Swim sites are themselves CEDEN stations, where specific conductivity is likely recorded during routine sampling.</p>
 </section>
 <section id="section" class="level3">
 <h3 class="anchored" data-anchor-id="section"></h3>
@@ -224,7 +224,7 @@ Figure&nbsp;1
 <figcaption>(Fig. 3) Map of CEDEN and NWIS sites included in my salinity sampling dataset, and Safe-to-Swim monitoring locations, to see spatial distribution.</figcaption>
 </figure>
 </div>
-<p>Coverage drops once data quality is considered <em>(Fig. 5)</em>. Only 3,233 sites (49%) have a nearby station sampled in the last 10 years, and 2,594 (39%) have at least four recent sampling dates. Four dates is a low bar for checking the 95%-of-the-year salinity test, so this should be read as a screening threshold. Combining CARI with usable monitoring data, 3,525 Safe-to-Swim sites (53%) could currently be classified. That leaves 47% without a defensible salinity class.</p>
+<p>Coverage drops once data quality is considered <em>(Fig. 5)</em>. Only 3,233 sites (49%) have a nearby station sampled in the last 10 years, and 2,594 (39%) have at least four recent sampling dates. Four dates is a fairly low bar for checking the 95%-of-the-year salinity test, so this should be read as an initial screening threshold. Combining CARI with usable monitoring data, 3,525 Safe-to-Swim sites (53%) could currently be classified. That leaves 47% without a defensible salinity designation.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/06_s2s_by_data_source.png" class="img-fluid figure-img"></p>
@@ -268,7 +268,7 @@ Figure&nbsp;1
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span><strong>Upcoming code fixes:</strong> CEDEN deduplication happens before dropping empty results (cell 21). A station whose first record has an empty RESULT gets dropped entirely, even if it has valid records in later duplicates. Need to swap the order. I also have some cleaning cells commented out, since I edited my database directly. Need to repull data, and test code again - confirming it edits copies of original database.
+<span class="screen-reader-only">Caution</span><strong>Upcoming code fixes as of 11/16/2026 :</strong> CEDEN deduplication happens before dropping empty results (cell 21). A station whose first record has an empty RESULT gets dropped entirely, even if it has valid records in later duplicates. Need to swap the order. I also have some cleaning cells commented out, since I edited my database directly. Need to repull data, and test code again - confirming it edits copies of original database. Will also be creating an environment file.
 </div>
 </div>
 <div class="callout-body-container callout-body">

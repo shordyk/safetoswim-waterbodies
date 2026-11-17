@@ -1,0 +1,92 @@
+\begin{figure}
+
+\begin{minipage}[t]{0.50\linewidth}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{figures/O1_cari_majorclass.png}}
+
+}
+
+\subcaption{\label{fig-cari-class}CARI polygons by major class}
+
+\end{minipage}%
+%
+\begin{minipage}[t]{0.50\linewidth}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{figures/O2_cari_waterbody_type.png}}
+
+}
+
+\subcaption{\label{fig-cari-type}Most common CARI waterbody types with
+salinity modifiers.}
+
+\end{minipage}%
+
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[H]
+
+{\centering \includegraphics[width=6.77083in,height=\textheight,keepaspectratio]{figures/03_cari_salinity_distribution.png}
+
+}
+
+\caption{(Fig. 2) Spatial distribution of CARI waterbody polygons with
+salinity modifiers.}
+
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[H]
+
+{\centering \includegraphics[width=6.25in,height=\textheight,keepaspectratio]{figures/04d_all_coverage.png}
+
+}
+
+\caption{(Fig. 3) Map of CEDEN and NWIS sites included in my salinity
+sampling dataset, and Safe-to-Swim monitoring locations, to see spatial
+distribution.}
+
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{figures/06_s2s_by_data_source.png}}
+
+}
+
+\caption{(Fig. 4) Map displaying the distribution of Safe-to-Swim sites
+with a CEDEN or NWIS monitoring station within 250m, and a bar chart
+showing the sites by data source.}
+
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{figures/05_s2s_coverage_funnel.png}}
+
+}
+
+\caption{(Fig. 5) Bar chart showing the Safe-to-Swim sites with usable
+salinity monitoring or classification, at each stage of elimination.}
+
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[H]
+
+{\centering \includegraphics[width=7.08333in,height=\textheight,keepaspectratio]{figures/07_s2s_no_salinity_station.png}
+
+}
+
+\caption{(Fig. 6) Map of all Safe-to-Swim sites, sorted into those with
+a monitoring station nearby, those inside a CARI salinity polygon, and
+those with no station or CARI class. Highlights the spatial distribution
+of sites with no salinity data.}
+
+\end{figure}
